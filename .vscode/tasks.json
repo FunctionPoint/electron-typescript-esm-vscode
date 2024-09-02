@@ -15,7 +15,9 @@
 		{
 			"label": "preLaunch",
 			"type": "shell",
-			"command": "preLaunch.sh",
+			"windows": { "command": "preLaunch.sh" },
+			"linux": { "command": "./preLaunch.sh" },
+			"osx": { "command": "./preLaunch.sh" },
 			"options": {
 				"cwd": "${workspaceFolder}"
 			},
