@@ -27,22 +27,31 @@ I borrowed a lot from these repo's for the groundwork:
 
 ## Install application
 
-```sh
-# Make sure TypeScript is installed globally
-npm install -g typescript
+### Make sure TypeScript is installed globally:
+
+	`npm install -g typescript`
+
+### On Windows: Associate *.sh scripts with bash
+
+Download Git for Windows from:
+
+	https://git-scm.com/download/win
+
+Double-click on prelaunch.sh and open it always with Git Bash
 
 # Install dependencies: Electron
-npm install
+
+`npm install`
 
 ## Set up Visual Studio Code and start debugging
 
 - Open `Electron.code-workspace` with Visual Studio Code.
-- Set a breakpoint in `src/main.ts` and `src/renderer.ts`.
+- Set a breakpoint in `src/MyApp.ts` and `src/MyView.ts`.
 - In the Run view, select the "Electron: All" configuration.
 - Click the green arrow next to the "Electron: All" configuration.
-- The breakpoint in `main.ts` will be hit.
+- The breakpoint in `MyApp.ts` will be hit.
 
 - Continue by pressing [F5]
 - In the Electron example app, click the "Turn page green" button.
-- The breakpoint in `renderer.ts` will be hit.
+- The breakpoint in `MyView.ts` will be hit.
 ```
