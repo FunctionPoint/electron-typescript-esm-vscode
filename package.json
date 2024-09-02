@@ -1,0 +1,12 @@
+{
+	"name": "electron_typescript_vscode",
+	"version": "1.0.0",
+	"type": "module",
+	"main": "build/main.js",
+	"author": "Richard Ronteltap",
+	"license": "MIT",
+	"description": "",
+	"dependencies": {
+		"electron": "^32.0.1"
+	}
+}
