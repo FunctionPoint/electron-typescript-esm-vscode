@@ -25,14 +25,14 @@ export class MyView
 		console.assert( this.pingButton );
 		this.pingButton.addEventListener( "click", () => this.ping() );
 
-		this.pingResultSpan = <HTMLButtonElement> document.getElementById( 'pingResultSpan' );
+		this.pingResultSpan = <HTMLSpanElement> document.getElementById( 'pingResultSpan' );
 		console.assert( this.pingResultSpan );
 	}
 
 	changeBackgroundColor()
 	{
 		console.log( "MyView: Change background button clicked." );
-		document.body.style.backgroundColor = "green";
+		document.body.style.setProperty( "background", "green" );
 	}
 
 	modifyTitle()
@@ -41,11 +41,14 @@ export class MyView
 		window.myApi.setTitle( "Hello Electron! (modified title)" );
 	}
 
-	async ping()
+	ping()
 	{
 		console.log( "MyView: Ping button clicked." );
-		const result = await window.myApi.ping( "ping" );
+		window.myApi.ping( "Ping", ( result: string ) => this.onPing( result ) )
+	}
 
+	onPing( result: string )
+	{
 		console.log( "MyView: Received result from API: " + result );
 		this.pingResultSpan.textContent = result;
 	}

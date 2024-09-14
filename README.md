@@ -1,7 +1,7 @@
 
 # Electron with Typescript and ESM in VSCode
 
-The aim of this repository is to help setting up Visual Studio Code for development of Electron apps in Typescript
+The aim of this repository is to help setting up Visual Studio Code for development of Electron apps in TypeScript
 using the latest language and module standards with in a fully object-orented MVC app design.
 
 These are the features of this repo:
@@ -17,8 +17,11 @@ These are the features of this repo:
   	So not in package.json scripts.
 - All code in classes in MVC pattern.
 	So no global functions and variables.
-- Separate Electon boiler plate code from user code.
+- Separate Electron boiler plate code from user code.
 - Consistent variable and function naming and logging.
+- Implements Node (main) and browser (renderer) components.
+- Implements IPC for communicating between main and renderer components\
+  with async and sync operations.
 
 I borrowed a lot from these repo's for the groundwork:
 
@@ -37,7 +40,7 @@ Download Git for Windows from:
 
 	https://git-scm.com/download/win
 
-Double-click on prelaunch.sh and open it always with Git Bash
+Double-click on preLaunch.sh and open it always with Git Bash
 
 # Install dependencies: Electron
 
