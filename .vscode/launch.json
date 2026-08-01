@@ -42,7 +42,8 @@
 			"preLaunchTask": "preLaunch"
 		}
 	],
-	"compounds": [ //launch multiple configurations concurrently
+	"compounds": [
+		//launch multiple configurations concurrently
 		{
 			"name": "Electron: All",
 			"configurations": [

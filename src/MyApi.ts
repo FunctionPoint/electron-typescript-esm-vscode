@@ -7,10 +7,10 @@ export class MyApi
 	expose()
 	{
 		let api =
-			{
-				setTitle: ( newTitle: string ) => this.setTitle( newTitle ),
-				ping: ( data: string, pingCallback: PingCallback ) => this.ping( data, pingCallback )
-			};
+		{
+			setTitle: ( newTitle: string ) => this.setTitle( newTitle ),
+			ping: ( data: string, pingCallback: PingCallback ) => this.ping( data, pingCallback )
+		};
 
 		contextBridge.exposeInMainWorld( "myApi", api );
 	}
@@ -21,11 +21,11 @@ export class MyApi
 		ipcRenderer.send( "setTitle", newTitle );
 	}
 
-	ping( data: string, pingCallback: PingCallback )
+	async ping( data: string, pingCallback: PingCallback )
 	{
 		console.log( "MyApi: Invoking 'ping' event on ipcRenderer with data: " + data );
-		ipcRenderer.invoke( 'ping', data )
-			.then( ( result: string ) => pingCallback( result ) );
+		let result = await ipcRenderer.invoke( 'ping', data ) as string;
+		pingCallback( result );
 	}
 }
 

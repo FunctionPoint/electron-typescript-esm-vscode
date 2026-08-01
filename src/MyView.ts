@@ -1,6 +1,6 @@
 export class MyView
 {
-	changeBackgroundButton?: HTMLButtonElement;
+	changeBackgroundButton!: HTMLButtonElement;
 	modifyTitleButton!: HTMLButtonElement;
 	pingButton!: HTMLButtonElement;
 	pingResultSpan!: HTMLSpanElement;
@@ -13,20 +13,24 @@ export class MyView
 
 	bindElements()
 	{
-		this.changeBackgroundButton = <HTMLButtonElement> document.getElementById( "changeBackgroundButton" );
-		console.assert( this.changeBackgroundButton );
+		this.changeBackgroundButton = this.getElement( "changeBackgroundButton" ) as HTMLButtonElement;
 		this.changeBackgroundButton.addEventListener( "click", () => this.changeBackgroundColor() );
 
-		this.modifyTitleButton = <HTMLButtonElement> document.getElementById( 'modifyTitleButton' );
-		console.assert( this.modifyTitleButton );
+		this.modifyTitleButton = this.getElement( "modifyTitleButton" ) as HTMLButtonElement;
 		this.modifyTitleButton.addEventListener( "click", () => this.modifyTitle() );
 
-		this.pingButton = <HTMLButtonElement> document.getElementById( 'pingButton' );
-		console.assert( this.pingButton );
+		this.pingButton = this.getElement( "pingButton" ) as HTMLButtonElement;
 		this.pingButton.addEventListener( "click", () => this.ping() );
 
-		this.pingResultSpan = <HTMLSpanElement> document.getElementById( 'pingResultSpan' );
-		console.assert( this.pingResultSpan );
+		this.pingResultSpan = this.getElement( "pingResultSpan" ) as HTMLSpanElement;
+	}
+
+	getElement( name: string ): HTMLElement
+	{
+		let element = document.getElementById( name )
+		if( ! element )
+			throw Error( "HTML element not found: " + element );
+		return element;
 	}
 
 	changeBackgroundColor()
@@ -54,4 +58,3 @@ export class MyView
 	}
 
 }
-

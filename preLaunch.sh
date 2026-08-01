@@ -9,7 +9,7 @@ echo "==== Copy HTML to build"
 
 cp src/index.html build/index.html
 
-echo "==== Rename preload.js to .mjs"
+echo "==== Rename preload.js to *.mjs"
 
 # 2024-09-01:
 # The preload.js script is an ESM module (just like the rest)

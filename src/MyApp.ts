@@ -1,22 +1,22 @@
-import { app, BrowserWindow, ipcMain, WebPreferences, BrowserWindowConstructorOptions,
-	Menu, MenuItem, LoadFileOptions } from "electron";
+import
+	{
+		app, BrowserWindow, ipcMain, WebPreferences, BrowserWindowConstructorOptions,
+		Menu, MenuItem, LoadFileOptions
+	} from "electron";
 import * as path from "path";
 
 export class MyApp
 {
 	browserWindow!: BrowserWindow;
 
-	start()
+	async start()
 	{
-		app.whenReady().then( () => this.start2() );
-	}
+		await app.whenReady();
 
-	start2()
-	{
 		this.setupIpc();
 		this.setMenu();
 		this.createWindow();
-		this.loadHtml();
+		await this.loadHtml();
 		this.openDevTools();
 	}
 
@@ -66,9 +66,9 @@ export class MyApp
 			contextIsolation: true,
 			sandbox: false,
 			preload: path.resolve( "preload.mjs" )
-		}
+		};
 
-		let options:  BrowserWindowConstructorOptions = {
+		let options: BrowserWindowConstructorOptions = {
 			width: 1000,
 			height: 800,
 			webPreferences: webPreferences
@@ -77,19 +77,15 @@ export class MyApp
 		this.browserWindow = new BrowserWindow( options );
 	}
 
-	loadHtml()
+	async loadHtml()
 	{
 		let options: LoadFileOptions = { search: '?test' };
-		this.browserWindow.loadFile( "index.html", options )
-			.then( () => console.log( "MyApp: HTML file loaded in browser window" ) )
-			.catch( ( error: any ) => console.error( error ) );
+		await this.browserWindow.loadFile( "index.html", options );
+		console.log( "MyApp: HTML file loaded in browser window" );
 	}
 
 	openDevTools()
 	{
-		// 2024-09-01:
-		// This request currently produces this error on the rendering console: "Request Autofill.enable failed."
-		// This is an Electron issue that is reported here: https://github.com/electron/electron/issues/41614
 		this.browserWindow.webContents.openDevTools();
 	}
 
